@@ -1,0 +1,18 @@
+class Solution {
+    static final int INF = 10000;
+    static int  solve(int amount , int index , int [] coins){
+        if(amount == 0) {
+            return 0 ;
+        }
+        if(amount<0 || index>=coins.length){
+            return INF;
+        }
+        int include = 1 + solve(amount-coins[index] , index , coins );
+        int exclude = solve(amount , index+1 , coins);
+        return Math.min(include,exclude);
+    }
+    public int coinChange(int[] coins, int amount) {
+      int ans  = solve(amount , 0 , coins);
+      return ans==INF?-1:ans;  
+    }
+}

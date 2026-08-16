@@ -1,0 +1,20 @@
+class Solution {
+    static int solve(int amount , int index , int[] coins){
+        if(amount==0){
+            return 1;
+        }
+        if(amount<0){
+            return 0;
+        }
+        if(index>=coins.length){
+            return 0;
+        }
+        int include = solve(amount-coins[index] , index , coins);
+        int exclude = solve(amount , index+1 , coins);
+        return include + exclude;
+    }
+    public int change(int amount, int[] coins) {
+        int ans = solve(amount,0,coins);
+        return ans;
+    }
+}
