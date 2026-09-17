@@ -7,7 +7,7 @@ class Solution {
         int ans =0;
         if(text1.charAt(i)==text2.charAt(j)){
             int c1 = 1 + solve(text1,text2,i+1,j+1,dp);
-            ans+=c1;
+            ans+=Math.max(c1,ans);
         }else{
             int c1 = solve(text1,text2,i+1,j,dp);
             int c2 = solve(text1,text2,i,j+1,dp);
